@@ -1,164 +1,98 @@
 <div align="center">
-  <img src="assets/banners/gh-banner.png" width="auto" height="auto" alt="LibreTube">
+  <img src="ios/Resources/Icons/AppIcon60x60@3x.png" width="96" height="96" alt="LibreTube iOS icon">
+
+# LibreTube for iOS
+
+A native SwiftUI port of [LibreTube](https://github.com/libre-tube/LibreTube): a private YouTube client for iPhone and iPad, without Google accounts, ads or tracking.
 
 [![GPL-v3](assets/widgets/license-widget.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-</div><div align="center" style="width:100%; display:flex; justify-content:space-between;">
-
-[![Matrix](assets/widgets/mat-widget.svg)](https://matrix.to/#/#LibreTube:matrix.org)
-[![Mastodon](assets/widgets/mast-widget.svg)](https://fosstodon.org/@libretube)
-[![Lemmy](assets/widgets/lemmy-widget.svg)](https://feddit.rocks/c/libretube)
 
 </div>
 
 > **Note** <br>
-> We don't accept feature or bug requests on these platforms. Kindly submit requests only on GitHub.
+> This is an unofficial fork. The iOS app lives in [`ios/`](ios/); the original Android app is kept in this repository unchanged. Please report problems with the iOS port here, not to the LibreTube project.
 
-</div><div align="center" style="width:100%; display:flex; justify-content:space-between;">
+## Features
 
-[<img src="assets/badges/fdrload.png" alt="Get it on F-Droid" width="30%">](https://f-droid.org/en/packages/com.github.libretube/)
-[<img src="assets/badges/izzyload.png" alt="Get it on IzzyOnDroid" width="30%">](https://apt.izzysoft.de/fdroid/index/apk/com.github.libretube)<br/>
-[<img src="assets/badges/ghload.png" alt="Get it on GitHub" width="30%">](https://github.com/libre-tube/LibreTube/releases/latest)
-[<img src="assets/badges/ghload-nightly.png" alt="Get it on GitHub (Nightly)" width="30%">](https://github.com/libre-tube/LibreTube/releases/tag/nightly)
+**Watching**
+- Native player (AVKit) with Picture-in-Picture, AirPlay, lock screen / Control Center controls and background playback, including with the screen locked
+- Mini player that stays above the tab bar; drag the player down to minimize it
+- Full screen always turns to landscape on iPhone, even with the rotation lock on
+- Quality menu (Auto or a fixed resolution), with a preferred quality in Settings
+- **Audio only**: streams only the audio (no video data is downloaded) and shows the cover art instead – ideal for music
+- **Autoplay**: plays the next related video when one ends, also in the background; the "next" button on the lock screen and headphones skips to it
+- SponsorBlock: skips sponsors, intros and other segments you choose
+- Chapters, description, related videos and comments
 
-</div>
+**Music**
+- Artist pages for "Artist - Topic" channels, from YouTube Music: top songs, albums, singles & EPs, videos, playlists, "featured on" and similar artists
+- Albums and YouTube Music playlists open like any other playlist
 
-> **Note about Nightly builds** <br>
-> Nightly builds include features/fixes before the official release. Therefore, they are generally less stable than normal releases. Use nightly builds at your own risk.
+**Browsing**
+- Home with Featured (latest from your subscriptions), Continue Watching, Live Now and your playlists – each section can be turned on or off in Settings
+- Subscriptions feed and channel list
+- Channels with their videos and playlists
+- Search with filters (videos, channels, playlists), suggestions and recent searches
 
-<details>
-  <summary>📜️ Credits</summary>
+**Your library – stored only on your device**
+- Subscriptions without an account
+- Watch history with resume positions (swipe to remove an entry)
+- Local playlists; any YouTube playlist can be saved as a local copy
+- Import from NewPipe, LibreTube / Piped backups, FreeTube, YouTube Takeout or a plain list of links
 
-<sub>Readme Design and Banners by [XelXen](https://github.com/XelXen)</sub> <br>
-<sub>Readme Screenshots by [ARBoyGo](https://github.com/ARBoyGo)</sub> <br>
-<sub>Readme Emoji is from [openmoji](https://openmoji.org)</sub>
+## How it works
 
-  <summary>Icons</summary>
+By default the app talks to YouTube directly from your device ("on-device" video source):
 
-<sub>[Default App Icon](https://github.com/libre-tube/LibreTube/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png) by [XelXen](https://github.com/XelXen)</sub> <br>
-<sub>[Boosted Bird](https://github.com/libre-tube/LibreTube/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_bird_round.png) by [Margot Albert-Heuzey](https://margotdesign.ovh)</sub>
+- **Playback** uses YouTube's own streaming protocol (SABR). A small server inside the app turns it into HLS for the system player, so playback works like in Safari, with adaptive quality and no time limits.
+- **Channels, playlists, comments and related videos** come from YouTube's InnerTube API; artist pages come from YouTube Music.
+- **The subscription feed** combines YouTube's per-channel feeds with a [Piped](https://github.com/TeamPiped/Piped) instance, so it stays up to date even for channels the instance doesn't follow.
 
-</details>
+Alternatively you can switch the video source to a **Piped instance** in Settings, so YouTube never sees your IP address for playback. Search, suggestions and Live Now always go through the selected Piped instance.
 
-<h2 align="left">
-<sub>
-<img  src="assets/readme/about.svg"
-      height="30"
-      width="30">
-</sub>
-About
-</h2>
+No Google account is used and nothing is sent to the developer.
 
-YouTube has an extremely invasive [privacy policy](https://support.google.com/youtube/answer/10364219) which relies on using user data in unethical ways. They store a lot of your personal data - ranging from ideas, music taste, content, political opinions, and much more than you think.
+## Install
 
-LibreTube aims at improving the users' privacy by being independent from Google and bypassing their data collection as much as possible. The app only sends the minimum amount of data necessary to ensure that the app works, e.g. it only loads the YouTube-video you want to play without tracking your behavior when using the app.
+The app isn't on the App Store. Build an `.ipa` (see below) or use one you trust, and sideload it with a tool such as [SideStore](https://sidestore.io), [AltStore](https://altstore.io) or [LiveContainer](https://github.com/LiveContainer/LiveContainer).
 
-If you have questions or need help, please make sure to read the [FAQ](https://libre-tube.github.io/#faq) before asking for help at the community channels. The [Matrix room](https://matrix.to/#/#LibreTube:matrix.org) is considered as the main communication channel, all other forums or social media accounts are maintained by volunteers from the community but not the developer(s).
+Requires iOS 17 or later. The Liquid Glass design needs iOS 26; earlier versions get the classic look.
 
-<h2 align="left">
-<sub>
-<img  src="assets/readme/phone.svg"
-      height="30"
-      width="30">
-</sub>
-Screenshots
-</h2>
+> Using LiveContainer? If choosing a file to import does nothing, enable "Fix File Picker" in LibreTube's settings inside LiveContainer.
 
-<div style="width:100%; display:flex; justify-content:space-between;">
+## Build
 
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/Screenshot_1.jpg" width=19% alt="Home">](fastlane/metadata/android/en-US/images/phoneScreenshots/Screenshot_1.jpg)
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/Screenshot_2.jpg" width=19% alt="Home">](fastlane/metadata/android/en-US/images/phoneScreenshots/Screenshot_2.jpg)
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/Screenshot_3.jpg" width=19% alt="Subscriptions">](fastlane/metadata/android/en-US/images/phoneScreenshots/Screenshot_3.jpg)
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/Screenshot_4.jpg" width=19% alt="Library">](fastlane/metadata/android/en-US/images/phoneScreenshots/Screenshot_4.jpg)
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/Screenshot_9.jpg" width=19% alt="Channel Overview">](fastlane/metadata/android/en-US/images/phoneScreenshots/Screenshot_9.jpg)
+The app is a Swift package (Swift 6, no third-party dependencies) and can be built on Linux or macOS with [xtool](https://github.com/xtool-org/xtool):
 
-* More screenshots can be found [here](https://github.com/libre-tube/LibreTube/blob/master/SCREEN_SHOT.md)
+```sh
+# once: install xtool and the iOS SDK (needs an Xcode .xip from Apple)
+xtool setup
 
-</div>
+cd ios
+xtool dev build --ipa    # writes xtool/LibreTube.ipa
+```
 
-<h2 align="left">
-<sub>
-<img  src="assets/readme/feature.svg"
-      height="30"
-      width="30">
-</sub>
-Features
-</h2>
+Project layout:
 
-- [x] No Ads or Tracking
-- [x] Subscriptions
-- [x] Subscription Groups
-- [x] User Playlists
-- [x] Playlist Bookmarks
-- [x] Watch/Search History
-- [x] Downloads
-- [x] Background playback
-- [x] User Accounts via [Piped](https://github.com/TeamPiped/Piped) (optional)
-- [x] [SponsorBlock](https://sponsor.ajay.app/) - skip sponsored segments in videos
-- [x] [ReturnYouTubeDislike](https://www.returnyoutubedislike.com/) - provides video dislike statistics
-- [x] [DeArrow](https://dearrow.ajay.app/) - provides better titles and thumbnails
+| Path | What's inside |
+| --- | --- |
+| `ios/Sources/LibreTubeCore` | Models, Piped and YouTube (InnerTube, YouTube Music, SABR) clients, local library, importers, settings – Foundation only |
+| `ios/Sources/LibreTube` | The SwiftUI app: screens, player, local HLS server, BotGuard and player-script helpers |
+| `ios/CONTRACT.md`, `ios/CONTRACT-SABR.md` | Design notes for the modules |
 
-<h2 align="left">
-<sub>
-<img  src="assets/readme/community.svg"
-      height="30"
-      width="30">
-</sub>
-Contributing
-</h2>
+## Troubleshooting
 
-For information on how to contribute, please check the [contribution guide](./CONTRIBUTING.md).
+Settings › About › **Playback Log** shows what the player is doing (stream type, quality, network errors). Please include it when reporting a playback problem.
 
-<h2 align="left">
-<sub>
-<img  src="assets/readme/donate.svg"
-      height="30"
-      width="30">
-</sub>
-Donate
-</h2>
+## Credits
 
-Donations can be made at:
-* <https://github.com/sponsors/Bnyro>
-* <https://liberapay.com/Bnyro>
-* Monero (XMR): 47jAx7jMFo5iqy9VgDH98qL1bSK4kr6Pxi7HKWcRwsxbVYJdjxJtyrwXeAUa5MutvcQUmWMBfvAKnPAutDHvWEymUgLm5v8
-* Ethereum (ETH): 0x599909f54CdC18B997Be8F032341d1Fb14BF4F39
+Based on [LibreTube](https://github.com/libre-tube/LibreTube) and its contributors, whose Android app this port follows in features, data formats and its SABR client. Also thanks to [Piped](https://github.com/TeamPiped/Piped), [SponsorBlock](https://sponsor.ajay.app), [yt-dlp](https://github.com/yt-dlp/yt-dlp) and [LuanRT/googlevideo](https://github.com/LuanRT/googlevideo) for documenting how YouTube streaming works.
 
-Contributions in any form are welcome!
+## Privacy Policy and Disclaimer
 
-<h2 align="left">
-📝 Translations
-</h2>
+Everything the app stores – subscriptions, history, playlists and settings – stays on your device. See LibreTube's [Privacy Policy](/PRIVACY_POLICY.md), and the privacy policy of the Piped instance you choose in the app.
 
-<a href="https://hosted.weblate.org/projects/libretube/#languages">
-<img src="https://hosted.weblate.org/widgets/libretube/-/287x66-grey.png" alt="Translation status" />
-</a>
-
-<h2 align="left">
-<sub>
-<img  src="assets/readme/ltvnp.svg"
-      height="30"
-      width="30">
-</sub>
-Differences to NewPipe
-</h2>
-
-LibreTube's main difference to NewPipe is that it has a much stronger focus on user experience. LibreTube uses the modern [Material 3 Expressive](https://m3.material.io) design, supports external APIs such as SponsorBlock, ReturnYouTubeDislike, or DeArrow, and allows you to synchronize your user data across devices, e.g. via Piped. <!-- TODO: replace with LibreTube sync server -->
-
-While LibreTube only supports content from YouTube, NewPipe also allows the use of other platforms like SoundCloud, PeerTube, Bandcamp and media.ccc.de.
-
-Both, LibreTube and NewPipe, are great clients for watching YouTube videos. There's no general answer about which one is better, just try them both and see which one fits you best.
-
-<h2 align="left">
-<sub>
-<img  src="assets/readme/privacy.svg"
-      height="30"
-      width="30">
-</sub>
-Privacy Policy and Disclaimer
-</h2>
-
-
-LibreTube aims to protect the privacy of its users. [Our Privacy Policy](/PRIVACY_POLICY.md) gives detailed information on which data the app stores in order to work, how it is being used, and how the project protects your personal information. It is recommended to read the privacy policy of LibreTube as well as the privacy policy of the instance you have chosen inside the app.
+This project is not affiliated with YouTube or Google.
 
 ## License
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl-3.0.en.html)
@@ -166,9 +100,3 @@ LibreTube aims to protect the privacy of its users. [Our Privacy Policy](/PRIVAC
 LibreTube is [Free Software](https://en.wikipedia.org/wiki/Free_software): You can use, study, share and modify it at your will. The app can be redistributed and/or modified under the terms of the
 [GNU General Public License version 3 or later](https://www.gnu.org/licenses/gpl.html) published by the
 [Free Software Foundation](https://www.fsf.org/).
-
-<div align="right">
-<table><td>
-<a href="#start-of-content">↥ Scroll to top</a>
-</td></table>
-</div>
