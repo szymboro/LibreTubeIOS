@@ -1,16 +1,16 @@
 <div align="center">
-  <img src="ios/Resources/Icons/AppIcon60x60@3x.png" width="96" height="96" alt="LibreTube iOS icon">
+  <img src="ios/Resources/Icons/AppIcon60x60@3x.png" width="96" height="96" alt="Aeternus icon">
 
-# LibreTube for iOS
+# Aeternus
 
-A native SwiftUI port of [LibreTube](https://github.com/libre-tube/LibreTube): a private YouTube client for iPhone and iPad, without Google accounts, ads or tracking.
+A private YouTube client for iPhone and iPad, without Google accounts, ads or tracking. A native SwiftUI app based on [LibreTube](https://github.com/libre-tube/LibreTube).
 
 [![GPL-v3](assets/widgets/license-widget.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 </div>
 
 > **Note** <br>
-> This is an unofficial fork. The iOS app lives in [`ios/`](ios/); the original Android app is kept in this repository unchanged. Please report problems with the iOS port here, not to the LibreTube project.
+> Aeternus is an independent fork, not an official LibreTube app (it was called "LibreTube for iOS" before). The iOS app lives in [`ios/`](ios/); the original Android app is kept in this repository unchanged. Please report problems with Aeternus here, not to the LibreTube project.
 
 ## Features
 
@@ -61,7 +61,7 @@ The app isn't on the App Store. Build an `.ipa` (see below) or use one you trust
 
 Requires iOS 17 or later. The Liquid Glass design needs iOS 26; earlier versions get the classic look.
 
-> Using LiveContainer? If choosing a file to import does nothing, enable "Fix File Picker" in LibreTube's settings inside LiveContainer.
+> Using LiveContainer? If choosing a file to import does nothing, enable "Fix File Picker" in Aeternus's settings inside LiveContainer.
 
 ## Build
 
@@ -72,15 +72,15 @@ The app is a Swift package (Swift 6, no third-party dependencies) and can be bui
 xtool setup
 
 cd ios
-xtool dev build --ipa    # writes xtool/LibreTube.ipa
+xtool dev build --ipa    # writes xtool/Aeternus.ipa
 ```
 
 Project layout:
 
 | Path | What's inside |
 | --- | --- |
-| `ios/Sources/LibreTubeCore` | Models, Piped and YouTube (InnerTube, YouTube Music, SABR) clients, local library, importers, settings – Foundation only |
-| `ios/Sources/LibreTube` | The SwiftUI app: screens, player, local HLS server, BotGuard and player-script helpers |
+| `ios/Sources/AeternusCore` | Models, Piped and YouTube (InnerTube, YouTube Music, SABR) clients, local library, importers, settings – Foundation only |
+| `ios/Sources/Aeternus` | The SwiftUI app: screens, player, local HLS server, BotGuard and player-script helpers |
 | `ios/CONTRACT.md`, `ios/CONTRACT-SABR.md` | Design notes for the modules |
 
 ## Troubleshooting
@@ -89,7 +89,7 @@ Settings › About › **Playback Log** shows what the player is doing (stream t
 
 ## Credits
 
-Based on [LibreTube](https://github.com/libre-tube/LibreTube) and its contributors, whose Android app this port follows in features, data formats and its SABR client. Also thanks to [Piped](https://github.com/TeamPiped/Piped), [SponsorBlock](https://sponsor.ajay.app) and DeArrow, [Return YouTube Dislike](https://returnyoutubedislike.com), [yt-dlp](https://github.com/yt-dlp/yt-dlp) and [LuanRT/googlevideo](https://github.com/LuanRT/googlevideo) for documenting how YouTube streaming works.
+Based on [LibreTube](https://github.com/libre-tube/LibreTube) and its contributors, whose Android app Aeternus follows in features, data formats and its SABR client. Also thanks to [Piped](https://github.com/TeamPiped/Piped), [SponsorBlock](https://sponsor.ajay.app) and DeArrow, [Return YouTube Dislike](https://returnyoutubedislike.com), [yt-dlp](https://github.com/yt-dlp/yt-dlp) and [LuanRT/googlevideo](https://github.com/LuanRT/googlevideo) for documenting how YouTube streaming works.
 
 ## Privacy Policy and Disclaimer
 
@@ -100,6 +100,6 @@ This project is not affiliated with YouTube or Google.
 ## License
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl-3.0.en.html)
 
-LibreTube is [Free Software](https://en.wikipedia.org/wiki/Free_software): You can use, study, share and modify it at your will. The app can be redistributed and/or modified under the terms of the
+Aeternus, like LibreTube, is [Free Software](https://en.wikipedia.org/wiki/Free_software): You can use, study, share and modify it at your will. The app can be redistributed and/or modified under the terms of the
 [GNU General Public License version 3 or later](https://www.gnu.org/licenses/gpl.html) published by the
 [Free Software Foundation](https://www.fsf.org/).
