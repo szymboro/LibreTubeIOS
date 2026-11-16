@@ -22,6 +22,8 @@ A native SwiftUI port of [LibreTube](https://github.com/libre-tube/LibreTube): a
 - **Audio only**: streams only the audio (no video data is downloaded) and shows the cover art instead – ideal for music
 - **Autoplay**: plays the next related video when one ends, also in the background; the "next" button on the lock screen and headphones skips to it
 - SponsorBlock: skips sponsors, intros and other segments you choose
+- [DeArrow](https://dearrow.ajay.app) (optional): replaces clickbait titles and thumbnails with community-submitted ones; lookups send only a hash prefix of the video ID
+- [Return YouTube Dislike](https://returnyoutubedislike.com) (optional): shows estimated dislike counts in the player
 - Chapters, description, related videos and comments
 
 **Music**
@@ -33,6 +35,7 @@ A native SwiftUI port of [LibreTube](https://github.com/libre-tube/LibreTube): a
 - Subscriptions feed and channel list
 - Channels with their videos and playlists
 - Search with filters (videos, channels, playlists), suggestions and recent searches
+- Hide Shorts everywhere or on chosen screens, optionally any video under a length you pick
 
 **Your library – stored only on your device**
 - Subscriptions without an account
@@ -86,7 +89,7 @@ Settings › About › **Playback Log** shows what the player is doing (stream t
 
 ## Credits
 
-Based on [LibreTube](https://github.com/libre-tube/LibreTube) and its contributors, whose Android app this port follows in features, data formats and its SABR client. Also thanks to [Piped](https://github.com/TeamPiped/Piped), [SponsorBlock](https://sponsor.ajay.app), [yt-dlp](https://github.com/yt-dlp/yt-dlp) and [LuanRT/googlevideo](https://github.com/LuanRT/googlevideo) for documenting how YouTube streaming works.
+Based on [LibreTube](https://github.com/libre-tube/LibreTube) and its contributors, whose Android app this port follows in features, data formats and its SABR client. Also thanks to [Piped](https://github.com/TeamPiped/Piped), [SponsorBlock](https://sponsor.ajay.app) and DeArrow, [Return YouTube Dislike](https://returnyoutubedislike.com), [yt-dlp](https://github.com/yt-dlp/yt-dlp) and [LuanRT/googlevideo](https://github.com/LuanRT/googlevideo) for documenting how YouTube streaming works.
 
 ## Privacy Policy and Disclaimer
 
