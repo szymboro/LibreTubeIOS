@@ -1,11 +1,11 @@
 <div align="center">
-  <img src="ios/Resources/Icons/AppIcon60x60@3x.png" width="96" height="96" alt="Aeternus icon">
+  <img src="ios/Resources/AppIcon.png" width="128" height="128" alt="Aeternus icon">
 
 # Aeternus
 
 A private YouTube client for iPhone and iPad, without Google accounts, ads or tracking. A native SwiftUI app based on [LibreTube](https://github.com/libre-tube/LibreTube).
 
-[![GPL-v3](assets/widgets/license-widget.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![GPL-v3](ios/Branding/license-badge.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 </div>
 
